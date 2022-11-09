@@ -49,16 +49,55 @@ $(function(){
 
 	    $('html').css('scroll-padding',header.$el.outerHeight())
 
-		$('.blob').each(function(i,el){
-			// generateBlob(el);
-			if (el.className.includes('animate')){
-				var delay = getComputedStyle(el).transitionDuration.replace('s','') * 1000 * 2;
-				setTimeout(function(){
-					setInterval(function(){generateBlob(el)},delay);
-				},1500*i)
-			}
-		})
 	}
+
+	$('.sliderFW.ce_rsce_tabs\\+\\+').each(function(){
+		var slider = $(this).sliderFW('get');
+		var nav = slider.$nav.get(0);
+		var isDown = false;
+		var startX;
+		var scrollLeft;
+		var clickHandler = function(){
+			var item = this;
+			slider.$nav.animate({scrollLeft: item.offsetLeft-(slider.$nav.outerWidth()/2)+(item.offsetWidth/2)}, 1000,'swing')
+		};
+
+		slider.$nav.find('.sliderFW__nav__item').on('click', clickHandler);
+		nav.addEventListener('mousedown', (e) => {
+		  isDown = true;
+		  nav.classList.add('dragged');
+		  startX = e.pageX - nav.offsetLeft;
+		  scrollLeft = nav.scrollLeft;
+		});
+		nav.addEventListener('mouseleave', () => {
+		  isDown = false;
+		  nav.classList.remove('dragged');
+		});
+		nav.addEventListener('mouseup', () => {
+		  isDown = false;
+		  nav.classList.remove('dragged');
+		});
+		nav.addEventListener('mousemove', (e) => {
+		  if(!isDown) return;
+		  e.preventDefault();
+		  const x = e.pageX - nav.offsetLeft;
+		  const walk = (x - startX) * 1; //scroll-fast
+		  nav.scrollLeft = scrollLeft - walk;
+		  // console.log(walk);
+		});
+	});
+
+
+
+	$('.blob').each(function(i,el){
+		// generateBlob(el);
+		if (el.className.includes('animate')){
+			var delay = getComputedStyle(el).transitionDuration.replace('s','') * 1000 * 2;
+			setTimeout(function(){
+				setInterval(function(){generateBlob(el)},delay);
+			},1500*i)
+		}
+	});
 
 });
 
