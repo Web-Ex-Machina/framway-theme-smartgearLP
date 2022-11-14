@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5, h6,
 
 .bg-primary{color: contrastFW(color(white), $primary);}
 
+.explanation{font-size: 0.6em; max-width: fit-content;
+	*+&{margin-top: 1em;}
+}
+
 @function randomBetween($min, $max) {
   $rand: random();
   $randomNum: $min + floor($rand * (($max - $min) + 1));
