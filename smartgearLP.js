@@ -80,6 +80,14 @@ $(function(){
 		})
 	}
 
+	$('.sliderFW.ce_rsce_tabs\\+\\+ .tab__picture.multiple').each(function(){
+		$wrapper = $(this);
+		setInterval(function(){
+			var current = $wrapper.find('img.active');
+			var next = current.next('img').length ? current.next('img') : $wrapper.find('img').first();
+			current.add(next).toggleClass('active');
+		},8000)
+	});
 	$('.sliderFW.ce_rsce_tabs\\+\\+').each(function(){
 		var slider = $(this).sliderFW('get');
 		var nav = slider.$nav.get(0);
