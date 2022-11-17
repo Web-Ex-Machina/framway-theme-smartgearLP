@@ -47,8 +47,37 @@ $(function(){
 	    	if(i) section_obs.observe(i);
 	    });
 
-	    $('html').css('scroll-padding',header.$el.outerHeight())
+	    $('html').css('scroll-padding',header.$el.outerHeight());
 
+
+	    // EVENTS MATOMO
+		header.$el.find('a').on('click',function(){
+			console.log('trackEvent Navigation '+this.innerText); 
+			_paq.push(['trackEvent', 'Navigation', 'Click', this.innerText]); 
+		})
+		$('.mod_article:first-of-type .heroFW:first-of-type a.goto').on('click',function(){
+			console.log('trackEvent Navigation Hero - Le Produit'); 
+			_paq.push(['trackEvent', 'Navigation', 'Click', 'Hero - Le Produit']); 
+		})
+		$('.sliderFW.ce_rsce_tabs\\+\\+ .sliderFW__nav__item ').on('click',function(){
+			if (typeof _paq != 'undefined'){
+				console.log('trackEvent Navigation '+this.innerText); 
+				_paq.push(['trackEvent', 'Navigation', 'Click', this.innerText]); 
+			}
+		});
+		// $('input[name=email]').on('blur',function(){
+		// 	if (this.value != '') {
+		// 		console.log('trackEvent Contact '+ this.value); 
+		// 		_paq.push(['trackEvent', 'Contact', 'Fill', 'Email',this.value]); 
+		// 	}
+		// });
+		$('input[name=consent_newsletter]').on('change',function(){
+			console.log('trackEvent Contact '+ $(this).isChecked()); 
+			_paq.push(['trackEvent', 'Contact', 'Fill', 'Newsletter',$(this).isChecked()]); 
+		});
+		$('#contact form [type=submit]').on('click',function(){
+			_paq.push(['trackEvent', 'Contact', 'Click', 'sendContact']); 
+		})
 	}
 
 	$('.sliderFW.ce_rsce_tabs\\+\\+').each(function(){
