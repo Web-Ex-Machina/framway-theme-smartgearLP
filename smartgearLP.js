@@ -81,7 +81,7 @@ $(function(){
 	}
 
 	$('.sliderFW.ce_rsce_tabs\\+\\+ .tab__picture.multiple').each(function(){
-		$wrapper = $(this);
+		var $wrapper = $(this);
 		setInterval(function(){
 			var current = $wrapper.find('img.active');
 			var next = current.next('img').length ? current.next('img') : $wrapper.find('img').first();
