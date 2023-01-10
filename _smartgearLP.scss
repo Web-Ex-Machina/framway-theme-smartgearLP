@@ -5,7 +5,9 @@ html{
 .headerFW{ background: color(cream); transition: background 0.6s;
 	&.is-pinned{background: body(background);}
 }
-.headerFW__nav__inline{text-transform: uppercase; font-weight: 300;}
+.headerFW__nav__inline{text-transform: uppercase; font-weight: 300;
+	.ft-u-no{text-decoration: none !important;}
+}
 .mod_article{padding: 0;margin-bottom: 0; 
 	&.snap{scroll-snap-align: start;}
 }
