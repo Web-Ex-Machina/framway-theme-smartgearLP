@@ -1,7 +1,7 @@
 $(function(){
 	if ($('body').hasClass('landingpage')) {
 		var header = $('.headerFW').headerFW('get');
-		header.$el.find('a').add('.goto').on('click',function(e){
+		header.$el.find('a').not('[target="_blank"]').add('.goto').on('click',function(e){
 			e.preventDefault();
 			var target = document.querySelector(this.getAttribute('href'));
 			if (target) {
