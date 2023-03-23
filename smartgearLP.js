@@ -129,10 +129,10 @@ $(function(){
 	$('.blob').each(function(i,el){
 		// generateBlob(el);
 		if (el.className.includes('animate')){
-			var delay = getComputedStyle(el).transitionDuration.replace('s','') * 1000 * 2;
+			var delay = getComputedStyle(el).transitionDuration.replace('s','') * 1000;
 			setTimeout(function(){
 				setInterval(function(){generateBlob(el)},delay);
-			},1500*i)
+			},3000*i)
 		}
 	});
 
