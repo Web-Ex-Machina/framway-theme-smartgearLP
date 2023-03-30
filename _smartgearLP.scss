@@ -239,3 +239,9 @@ $randMax: 75;
 #l-intention{.blob{@extend .blob--1;} }
 #les-composants{.blob{@extend .blob--2;} }
 #les-fonctionnalites{.blob{@extend .blob--3;} }
+
+
+.accordionFW__title{padding: 1.6em 3.8em 1.6em 2em;
+  &:after{right: 1.5em; top: 1.5em; }
+}
+.accordionFW__content__wrapper {padding: 1.5em 3em 3.5em 3em; @extend .txt-limit !optional;}
